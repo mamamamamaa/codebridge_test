@@ -3,12 +3,9 @@ import { Dog } from './dog.entity';
 
 @Injectable()
 export class DogService {
-  constructor(
-    @Inject('DOGS_PROVIDER')
-    private dogsModel: typeof Dog,
-  ) {}
+  constructor(@Inject('DOGS_REPOSITORY') private dogsRepository: typeof Dog) {}
 
   async findAll() {
-    return this.dogsModel.findAll();
+    return this.dogsRepository.findAll();
   }
 }

@@ -1,0 +1,13 @@
+version: "3.2"
+services:
+
+  sql-server-db:
+    container_name: sql-server-db
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_USER: "mamamama"
+      MSSQL_DATABASE: "codebridge"
+      MSSQL_SA_PASSWORD: "Qwerty_123456"

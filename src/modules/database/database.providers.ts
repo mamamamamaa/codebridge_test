@@ -1,4 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
+import { Dog } from '../dog/dog.entity';
 
 export const databaseProviders = [
   {
@@ -8,18 +9,12 @@ export const databaseProviders = [
         dialect: 'mssql',
         host: 'localhost',
         port: 1433,
-        username: 'YOURDATABASEUSERNAME',
-        password: 'YOURDATABASEPASSWORD',
-        database: 'DATABASENAME',
-        define: {
-          freezeTableName: true,
-          createdAt: false,
-          updatedAt: false,
-        },
+        username: 'mssql',
+        password: 'Qwerty_123456',
+        database: 'codebridge',
       });
-      sequelize.addModels([]);
-
-      // await sequelize.sync();
+      sequelize.addModels([Dog]);
+      await sequelize.sync();
       return sequelize;
     },
   },
