@@ -11,7 +11,7 @@ export const databaseProviders = [
         port: 1433,
         username: process.env.DATABASE_USER,
         password: process.env.DATABASE_PASSWORD,
-        database: process.env.DATABASE_NAME,
+        // database: process.env.DATABASE_NAME,
       });
       sequelize.addModels([Dog]);
       await sequelize.sync();

@@ -3,10 +3,12 @@ version: "3.7"
 services:
   mssql:
     image: "mcr.microsoft.com/mssql/server"
-    container_name: MS_SQL_Server
+    container_name: ms_sql_server
     restart: always
+    env_file:
+      - .env
     environment:
-      SA_PASSWORD: "realyStrongPassword123"
       ACCEPT_EULA: "Y"
+      SA_PASSWORD: ${DATABASE_PASSWORD}
     ports:
       - "1433:1433"

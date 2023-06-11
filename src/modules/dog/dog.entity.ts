@@ -1,16 +1,16 @@
-import { Table, Column, Model } from 'sequelize-typescript';
+import { Table, Column, Model, DataType } from 'sequelize-typescript';
 
 @Table
 export class Dog extends Model {
-  @Column
+  @Column({ unique: true, type: DataType.STRING })
   name: string;
 
-  @Column
+  @Column(DataType.STRING)
   color: string;
 
-  @Column
+  @Column({ type: DataType.FLOAT, validate: { min: 0 } })
   tail_length: number;
 
-  @Column
+  @Column({ type: DataType.FLOAT, validate: { min: 0 } })
   weight: number;
 }
