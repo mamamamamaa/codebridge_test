@@ -1,5 +1,5 @@
 import { Sequelize } from 'sequelize-typescript';
-import { Dog } from '../dog/dog.entity';
+import { Dog } from '../dog/models/dog.entity';
 
 export const databaseProviders = [
   {
