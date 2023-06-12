@@ -7,17 +7,24 @@ export const databaseProviders = [
   {
     provide: SEQUELIZE_PROVIDER,
     useFactory: async () => {
+      const {
+        DATABASE_USER: username,
+        DATABASE_PASSWORD: password,
+        DATABASE_PORT,
+      } = process.env;
+      const port = Number(DATABASE_PORT);
+
       const sequelize = new Sequelize({
         dialect: 'mssql',
         host: 'localhost',
-        port: 1433,
         retry: {
           max: 10,
           timeout: 3000,
           match: ERROR_MATCHES,
         },
-        username: process.env.DATABASE_USER,
-        password: process.env.DATABASE_PASSWORD,
+        port,
+        username,
+        password,
       });
 
       sequelize.addModels([Dog]);

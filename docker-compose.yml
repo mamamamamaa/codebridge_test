@@ -11,4 +11,20 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - "1433:1433"
+      - '${DATABASE_PORT}:1433'
+
+  nestjs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    depends_on:
+      - mssql
+    env_file:
+      - .env
+    environment:
+      - DATABASE_USER=${DATABASE_USER}
+      - DATABASE_PORT=${DATABASE_PORT}
+      - DATABASE_PASSWORD=${DATABASE_PASSWORD}
+      - PORT=${PORT}
+    ports:
+      - '${PORT}:3000'
