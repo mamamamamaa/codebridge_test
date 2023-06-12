@@ -3,6 +3,7 @@ export const DOG_PROVIDER = 'DOGS_REPOSITORY';
 export const COLOR_REGEX = /^(?:[a-zA-Z]+(?:&|$))+$/g;
 
 export const ATTRIBUTE_ENUM = ['name', 'color', 'tail_length', 'weight'];
+
 export const ORDER_ENUM = ['asc', 'desc'];
 
 export const DATABASE_INIT = [
