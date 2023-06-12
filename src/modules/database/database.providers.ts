@@ -1,7 +1,7 @@
 import { Sequelize } from 'sequelize-typescript';
 import { Dog } from '../dog/models/dog.entity';
 import { ERROR_MATCHES, SEQUELIZE_PROVIDER } from '../../consts/database';
-import { DATABASE_INIT } from '../../consts/dog';
+import { initializeDatabase } from '../../utils/databaseInitialize';
 
 export const databaseProviders = [
   {
@@ -30,13 +30,3 @@ export const databaseProviders = [
     },
   },
 ];
-
-async function initializeDatabase() {
-  try {
-    const existingDogs = await Dog.findAll();
-
-    if (existingDogs.length === 0) await Dog.bulkCreate(DATABASE_INIT);
-  } catch (error) {
-    console.error('Database initializing failed: ' + error);
-  }
-}
