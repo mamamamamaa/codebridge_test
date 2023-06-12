@@ -1,22 +1,20 @@
 import { IsEnum, IsInt, IsOptional, IsPositive, Min } from 'class-validator';
 import { Type } from 'class-transformer';
 import { OrderQueryParam } from '../../../types/dog';
-
-const attributeEnum = ['name', 'color', 'tail_length', 'weight'];
-const orderEnum = ['asc', 'desc'];
+import { ATTRIBUTE_ENUM, ORDER_ENUM } from '../../../consts/dog';
 
 export class DogQueryParamsDto {
   @IsOptional()
-  @IsEnum(attributeEnum, {
-    message: `attribute must be one of the following values: ${attributeEnum.join(
+  @IsEnum(ATTRIBUTE_ENUM, {
+    message: `attribute must be one of the following values: ${ATTRIBUTE_ENUM.join(
       ', ',
     )}`,
   })
   attribute: string;
 
   @IsOptional()
-  @IsEnum(orderEnum, {
-    message: `order must be one of the following values: ${orderEnum.join(
+  @IsEnum(ORDER_ENUM, {
+    message: `order must be one of the following values: ${ORDER_ENUM.join(
       ', ',
     )}`,
   })
