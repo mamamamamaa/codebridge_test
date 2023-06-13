@@ -1,9 +1,10 @@
 version: "3.7"
 
 services:
-  mssql:
+  db:
     image: "mcr.microsoft.com/mssql/server"
-    container_name: ms_sql_server
+    networks:
+      - codebridge
     restart: always
     env_file:
       - .env
@@ -11,14 +12,16 @@ services:
       ACCEPT_EULA: "Y"
       SA_PASSWORD: ${DATABASE_PASSWORD}
     ports:
-      - '${DATABASE_PORT}:1433'
+      - '${DATABASE_PORT}:${DATABASE_PORT}'
 
-  nestjs:
+  backend:
     build:
       context: .
       dockerfile: Dockerfile
+    networks:
+      - codebridge
     depends_on:
-      - mssql
+      - db
     env_file:
       - .env
     environment:
@@ -27,4 +30,8 @@ services:
       - DATABASE_PASSWORD=${DATABASE_PASSWORD}
       - PORT=${PORT}
     ports:
-      - '${PORT}:3000'
+      - '${PORT}:${PORT}'
+
+networks:
+  codebridge:
+    driver: bridge

@@ -1,4 +1,4 @@
-FROM node:18-alpine
+FROM node:18
 
 WORKDIR /app
 
@@ -10,6 +10,7 @@ COPY . .
 
 RUN npm run build
 
-EXPOSE 9999
+ARG PORT
+EXPOSE $PORT
 
 CMD [ "node", "dist/main.js" ]
