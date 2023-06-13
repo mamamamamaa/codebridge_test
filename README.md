@@ -1,7 +1,7 @@
 # Codebridge
 
 ## Description
-Test assignment to the Codebridge company. The essence of the building is to write a REST API using MS SQL.
+Test task to the Codebridge company. The essence of the building is to write a REST API using MS SQL.
 
 ## Setting
 First you need to make sure that you have **docker** and **docker-compose** installed. Next you need to follow these instructions:
