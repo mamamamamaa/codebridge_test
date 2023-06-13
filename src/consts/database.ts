@@ -1,14 +1,3 @@
-export const ERROR_MATCHES = [
-  /ETIMEDOUT/,
-  /EHOSTUNREACH/,
-  /ECONNRESET/,
-  /ECONNREFUSED/,
-  /ETIMEDOUT/,
-  /ESOCKETTIMEDOUT/,
-  /EHOSTDOWN/,
-  /EPIPE/,
-  /EAI_AGAIN/,
-  /SequelizeConnectionError/,
-];
+export const CONNECTION_TIMEOUT_IN_SECONDS = 10;
 
 export const SEQUELIZE_PROVIDER = 'SEQUELIZE';

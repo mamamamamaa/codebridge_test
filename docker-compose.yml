@@ -3,8 +3,6 @@ version: "3.7"
 services:
   db:
     image: "mcr.microsoft.com/mssql/server"
-    networks:
-      - codebridge
     restart: always
     env_file:
       - .env
@@ -18,8 +16,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    networks:
-      - codebridge
     depends_on:
       - db
     env_file:
@@ -31,7 +27,3 @@ services:
       - PORT=${PORT}
     ports:
       - '${PORT}:${PORT}'
-
-networks:
-  codebridge:
-    driver: bridge
